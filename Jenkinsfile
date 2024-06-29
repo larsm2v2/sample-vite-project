@@ -5,7 +5,7 @@ pipeline {
   }
   environment {
     HEROKU_API_KEY = credentials('heroku-api-key')
-    IMAGE_NAME = 'darinpope/jenkins-example-react'
+    IMAGE_NAME = 'sample-vite-project1'
     IMAGE_TAG = 'latest'
     APP_NAME = 'sample-vite-project'
   }
@@ -23,7 +23,7 @@ pipeline {
     stage('Push to Heroku registry') {
       steps {
         sh '''
-          docker tag $IMAGE_NAME:$IMAGE_TAG registry.heroku.com/$APP_NAME/web
+          docker tag $IMAGE_NAME:$IMAGE_TAG registry.heroku.com/$IMAGE_NAME/web
           docker push registry.heroku.com/$APP_NAME/web
         '''
       }
