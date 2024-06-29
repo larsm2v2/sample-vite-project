@@ -1,5 +1,6 @@
 # Build Stage
 FROM node:lts-alpine as build
+RUN apk update && apk add ca-certificates
 
 WORKDIR /build
 COPY package*.json ./
