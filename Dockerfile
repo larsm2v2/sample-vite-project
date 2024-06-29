@@ -1,6 +1,5 @@
 # Build Stage
-FROM node:lts-alpine as build
-RUN apk update && apk add ca-certificates
+FROM node:lts-buster as build
 
 WORKDIR /build
 COPY package*.json ./
@@ -13,7 +12,7 @@ COPY . .
 RUN npm run build
 
 # Production Stage
-FROM node:lts-alpine
+FROM node:lts-buster
 WORKDIR /app/build
 
 # Copy all files since they are in the same directory
