@@ -5,9 +5,9 @@ pipeline {
   }
   environment {
     HEROKU_API_KEY = credentials('heroku-api-key')
-    IMAGE_NAME = 'sample-vite-project1'
+    IMAGE_NAME = 'sample-vite-project'
     IMAGE_TAG = 'latest'
-    APP_NAME = 'sample-vite-project'
+    APP_NAME = 'sample-vite-project1'
   }
   stages {
     stage('Build') {
