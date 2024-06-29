@@ -12,12 +12,20 @@ COPY . .
 RUN npm run build
 
 # Production Stage
-FROM node:lts-buster
-WORKDIR /app/build
+FROM node:lts-buster-slim
+WORKDIR /app
 
 # Copy all files since they are in the same directory
-COPY --from=build /build/build ./
+COPY --from=build /build/dist ./
+
+# Copy the package lock file
+COPY --from=build /build/package*.json ./ 
+
+# Install production dependencies only
+RUN npm ci --omit=dev
+
 # Install ONLY production dependencies
+ENV NODE_ENV=production
 RUN npm ci --only=production
 
 EXPOSE 5173
