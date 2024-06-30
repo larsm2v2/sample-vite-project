@@ -21,7 +21,7 @@ COPY --from=build /build/dist ./
 
 # Copy the package lock file
 COPY --from=build /build/package*.json ./ 
-
+COPY --from=build /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/
 # Install production dependencies only
 RUN npm ci --omit=dev
 
