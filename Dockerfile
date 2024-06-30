@@ -1,5 +1,6 @@
 # Build Stage
 FROM node:lts-buster as build
+RUN apt-get update && apt-get install -y ca-certificates
 
 WORKDIR /build
 COPY package*.json ./
