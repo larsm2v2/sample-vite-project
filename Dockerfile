@@ -27,7 +27,6 @@ RUN npm ci --omit=dev
 
 # Install ONLY production dependencies
 ENV NODE_ENV=production
-RUN npm ci --only=production
 
 EXPOSE 5173
 
