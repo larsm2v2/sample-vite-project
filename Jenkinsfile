@@ -13,7 +13,7 @@ pipeline {
     stage('Build') {
       steps {
         sh 'node -v'
-        sh 'docker build -t $IMAGE_NAME:$IMAGE_TAG .'
+        sh 'docker-compose build'
       }
     }
     stage('Login') {
@@ -24,8 +24,7 @@ pipeline {
     stage('Push to Heroku registry') {
       steps {
         sh '''
-          docker tag $IMAGE_NAME:$IMAGE_TAG registry.heroku.com/$IMAGE_NAME/web
-          docker push registry.heroku.com/$APP_NAME/web
+          heroku container:push web --app=$APP_NAME
         '''
       }
     }
