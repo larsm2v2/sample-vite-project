@@ -12,7 +12,6 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'node -v'
         sh 'docker-compose build'
       }
     }
